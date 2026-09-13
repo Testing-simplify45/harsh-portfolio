@@ -81,16 +81,16 @@
     .project-card { background:var(--s2); border:1px solid var(--edge2); border-radius:14px; overflow:hidden; transition:border-color 0.2s; }
     .project-card:hover { border-color:var(--brand-rim); }
     .project-header { padding:20px 28px 16px; border-bottom:1px solid var(--edge); }
-    .project-num { font-family:var(--mono); font-size:10px; color:var(--g4); letter-spacing:0.08em; margin-bottom:6px; }
-    .project-title { font-size:20px; font-weight:700; letter-spacing:-0.02em; margin-bottom:5px; }
+    .project-num { font-family:var(--mono); font-size:10px; color:var(--g3); letter-spacing:0.08em; margin-bottom:6px; }
+    .project-title { font-size:20px; font-weight:700; letter-spacing:-0.02em; margin-bottom:5px; color:var(--white); }
     .project-chain { font-family:var(--mono); font-size:10px; color:var(--g3); letter-spacing:0.05em; margin-bottom:8px; }
     .project-chain span { color:var(--g4); }
     .project-problem { font-size:13px; color:var(--g2); line-height:1.6; max-width:700px; }
     .project-body { display:grid; grid-template-columns:1fr 1fr; }
 
     /* OUTCOMES BAR */
-    .outcomes-bar { display:flex; gap:0; border-bottom:1px solid var(--edge); }
-    .outcome-item { flex:1; padding:14px 20px; border-right:1px solid var(--edge); text-align:center; }
+    .outcomes-bar { display:flex; gap:0; border-bottom:1px solid var(--edge2); }
+    .outcome-item { flex:1; padding:14px 20px; border-right:1px solid var(--edge2); text-align:center; }
     .outcome-item:last-child { border-right:none; }
     .outcome-n { font-size:26px; font-weight:900; letter-spacing:-0.03em; color:var(--white); line-height:1; }
     .outcome-n span { color:var(--brand-lt); }
@@ -98,14 +98,14 @@
 
     /* LIVE PANEL */
     .live-panel { padding:20px 24px; border-right:1px solid var(--edge); }
-    .panel-label { font-family:var(--mono); font-size:10px; letter-spacing:0.07em; color:var(--brand-lt); margin-bottom:14px; display:flex; align-items:center; gap:6px; }
+    .panel-label { font-family:var(--mono); font-size:11px; letter-spacing:0.07em; color:var(--brand-lt); margin-bottom:14px; display:flex; align-items:center; gap:6px; font-weight:700; }
     .panel-label-dot { width:5px; height:5px; border-radius:50%; background:var(--ok); }
     .flow-viz { display:flex; flex-direction:column; gap:0; margin-bottom:16px; }
     .fv-step { display:flex; align-items:center; gap:12px; padding:6px 0; }
     .fv-icon { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; border:1px solid var(--edge2); background:var(--bg); }
     .fv-logo { padding:4px; border:1px solid var(--edge2); background:var(--bg); }
     .fv-logo img { width:22px; height:22px; object-fit:contain; display:block; }
-    .fv-tool { font-family:var(--mono); font-size:9px; color:var(--brand-lt); letter-spacing:0.06em; }
+    .fv-tool { font-family:var(--mono); font-size:9px; color:var(--brand-lt); letter-spacing:0.06em; font-weight:700; }
     .fv-desc { font-size:12px; color:var(--g1); }
     .fv-connector { width:32px; display:flex; justify-content:center; flex-shrink:0; }
     .fv-line { width:1px; height:12px; background:var(--edge3); }
@@ -124,8 +124,8 @@
     .case-toc { display:flex; flex-direction:column; gap:0; margin-bottom:16px; }
     .case-item { display:flex; gap:12px; align-items:flex-start; padding:8px 0; border-bottom:1px solid var(--edge); }
     .case-item:last-child { border-bottom:none; }
-    .case-num { font-family:var(--mono); font-size:10px; color:var(--brand); min-width:20px; margin-top:2px; }
-    .case-label { font-size:13px; font-weight:500; color:var(--g1); margin-bottom:1px; }
+    .case-num { font-family:var(--mono); font-size:10px; color:var(--brand-lt); min-width:20px; margin-top:2px; font-weight:700; }
+    .case-label { font-size:13px; font-weight:600; color:var(--g1); margin-bottom:1px; }
     .case-sub { font-size:11px; color:var(--g3); }
     .pdf-btn { width:100%; padding:10px; background:transparent; border:1px solid var(--edge2); border-radius:8px; color:var(--g2); font-family:var(--sans); font-size:12px; font-weight:500; cursor:pointer; transition:all 0.15s; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:7px; }
     .pdf-btn:hover { border-color:var(--g4); color:var(--white); }
@@ -151,7 +151,7 @@
     .tool-chip { display:flex; flex-direction:column; align-items:center; width:120px; flex-shrink:0; padding:0 16px; cursor:default; user-select:none; }
     .tool-logo-wrap { width:48px; height:48px; display:flex; align-items:center; justify-content:center; margin-bottom:10px; flex-shrink:0; }
     .tool-logo-wrap img { max-width:48px; max-height:48px; width:auto; height:auto; object-fit:contain; display:block; }
-    .tool-name { font-size:11px; font-weight:500; color:var(--g3); text-align:center; line-height:1.4; height:28px; display:flex; align-items:center; justify-content:center; width:100%; }
+    .tool-name { font-size:11px; font-weight:500; color:var(--g2); text-align:center; line-height:1.4; height:28px; display:flex; align-items:center; justify-content:center; width:100%; }
 
     /* CONTACT */
     .contact-grid { display:grid; grid-template-columns:1fr 400px; gap:64px; align-items:start; }
@@ -395,11 +395,22 @@
           <div class="live-panel">
             <div class="panel-label"><span class="panel-label-dot"></span>LIVE WORKFLOW</div>
             <div class="flow-viz">
-              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/zapier.svg" alt="Facebook/LinkedIn" onerror="this.parentNode.innerHTML='📘'"></div><div><div class="fv-tool">FACEBOOK / LINKEDIN</div><div class="fv-desc">New post published</div></div></div>
+              <div class="fv-step"><div class="fv-icon" style="background:#1a1a2e;border-color:#333;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </div><div><div class="fv-tool">FACEBOOK / LINKEDIN</div><div class="fv-desc">New post published</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
               <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/zapier.svg" alt="Zapier"></div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">Detects new post, fetches link</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
-              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/zapier.svg" alt="Zapier"></div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">Creates announcement message</div></div></div>
+              <div class="fv-step"><div class="fv-icon" style="background:#1a1a2e;border-color:#333;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+              </div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">Creates announcement message</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
               <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/discord.svg" alt="Discord"></div><div><div class="fv-tool">DISCORD</div><div class="fv-desc">Sent to all learner channels</div></div></div>
             </div>
