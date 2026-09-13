@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tools — Harsh Nisar</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#000;--s1:#0a0a0a;--s2:#111;--edge:#1a1a1a;--edge2:#262626;
+      --brand:#6366f1;--brand-lt:#a5b4fc;--brand-dim:rgba(99,102,241,0.08);--brand-rim:rgba(99,102,241,0.2);
+      --white:#fff;--g1:#f4f4f5;--g2:#a1a1aa;--g3:#52525b;--g4:#3f3f46;
+      --ok:#22c55e;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--max:1080px;
+    }
+    html{font-family:var(--sans);background:var(--bg);color:var(--white);}
+    nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--edge);}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+    .nav-logo{font-weight:900;font-size:15px;letter-spacing:-0.03em;color:var(--white);text-decoration:none;}
+    .nav-logo span{color:var(--brand-lt);}
+    .nav-links{display:flex;align-items:center;gap:2px;}
+    .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:0.04em;color:#d4d4d8;text-decoration:none;padding:6px 14px;border-radius:6px;transition:all 0.15s;}
+    .nav-links a:hover{color:var(--white);background:var(--edge2);}
+    .nav-links a.active{color:var(--brand-lt);}
+    .nav-cta{font-family:var(--sans);font-size:13px;font-weight:600;padding:8px 20px;background:var(--brand);color:#fff;border-radius:6px;text-decoration:none;}
+    .nav-cta:hover{opacity:0.85;}
+
+    .page-wrap{max-width:var(--max);margin:0 auto;padding:64px 32px 80px;}
+    .page-eyebrow{font-family:var(--mono);font-size:11px;color:var(--brand-lt);letter-spacing:0.08em;margin-bottom:12px;}
+    .page-title{font-size:40px;font-weight:900;letter-spacing:-0.04em;margin-bottom:10px;}
+    .page-desc{font-size:14px;color:var(--g2);line-height:1.65;margin-bottom:56px;}
+
+    .cat-block{margin-bottom:48px;}
+    .cat-label{
+      font-family:var(--mono);font-size:11px;color:var(--g3);letter-spacing:0.08em;
+      margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--edge);
+    }
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;}
+    .tool-card{
+      background:var(--s2);border:1px solid var(--edge2);border-radius:12px;
+      padding:24px 16px 18px;
+      display:flex;flex-direction:column;align-items:center;gap:12px;
+      transition:border-color 0.2s;
+    }
+    .tool-card:hover{border-color:var(--brand-rim);}
+    .tl-img{width:52px;height:52px;display:flex;align-items:center;justify-content:center;}
+    .tl-img img{max-width:52px;max-height:52px;width:auto;height:auto;object-fit:contain;display:block;}
+    .tl-name{font-size:12px;font-weight:500;color:var(--g1);text-align:center;line-height:1.4;}
+
+    footer{border-top:1px solid var(--edge);}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;}
+    .footer-inner p{font-family:var(--mono);font-size:11px;color:var(--g4);}
+
+    @media(max-width:768px){
+      .page-wrap{padding:40px 20px;}
+      .tools-grid{grid-template-columns:repeat(3,1fr);}
+      .nav-links{display:none;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">harsh<span>.</span></a>
+    <div class="nav-links">
+      <a href="about.html">about</a>
+      <a href="index.html#systems">systems</a>
+      <a href="tools.html" class="active">tools</a>
+      <a href="index.html#contact">contact</a>
+    </div>
+    <a class="nav-cta" href="index.html#contact">Let's work together →</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-eyebrow">&gt;_ TOOLS I USE</div>
+  <h1 class="page-title">Tools</h1>
+  <p class="page-desc">The tools I use to turn manual processes into streamlined workflows. Every tool here has been used in a real project.</p>
+
+  <div class="cat-block">
+    <div class="cat-label">AUTOMATION</div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tl-img"><img src="logos/zapier.svg" alt="Zapier"></div><div class="tl-name">Zapier</div></div>
+      <div class="tool-card"><div class="tl-img"><img src="logos/make.svg" alt="Make"></div><div class="tl-name">Make</div></div>
+      <div class="tool-card"><div class="tl-img"><img src="logos/n8n.svg" alt="n8n"></div><div class="tl-name">n8n</div></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-label">OPERATIONS</div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tl-img"><img src="logos/airtable.svg" alt="Airtable"></div><div class="tl-name">Airtable</div></div>
+      <div class="tool-card"><div class="tl-img"><img src="logos/notion.svg" alt="Notion"></div><div class="tl-name">Notion</div></div>
+      <div class="tool-card"><div class="tl-img"><img src="logos/trello.svg" alt="Trello"></div><div class="tl-name">Trello</div></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-label">PRODUCTIVITY & DATA</div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tl-img"><img src="logos/excel.svg" alt="Excel"></div><div class="tl-name">Excel</div></div>
+      <div class="tool-card"><div class="tl-img"><img src="logos/googledrive.svg" alt="Google Drive"></div><div class="tl-name">Google Drive</div></div>
+      <div class="tool-card"><div class="tl-img"><img src="logos/figma.svg" alt="Figma"></div><div class="tl-name">Figma</div></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-label">COMMUNICATION</div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tl-img"><img src="logos/slack.svg" alt="Slack"></div><div class="tl-name">Slack</div></div>
+      <div class="tool-card"><div class="tl-img"><img src="logos/mailchimp.svg" alt="Mailchimp"></div><div class="tl-name">Mailchimp</div></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-label">AI</div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tl-img"><img src="logos/claude.svg" alt="Claude AI"></div><div class="tl-name">Claude AI</div></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><p>© 2025 HARSH NISAR</p><p>OPERATIONS × AUTOMATION × AI × SYSTEMS</p></div></footer>
+</body>
+</html>

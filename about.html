@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Harsh Nisar</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#000;--s1:#0a0a0a;--s2:#111;--edge:#1a1a1a;--edge2:#262626;
+      --brand:#6366f1;--brand-lt:#a5b4fc;--brand-dim:rgba(99,102,241,0.08);--brand-rim:rgba(99,102,241,0.2);
+      --white:#fff;--g1:#f4f4f5;--g2:#a1a1aa;--g3:#52525b;--g4:#3f3f46;
+      --ok:#22c55e;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--max:1080px;
+    }
+    html{font-family:var(--sans);background:var(--bg);color:var(--white);scroll-behavior:smooth;}
+    nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--edge);}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+    .nav-logo{font-weight:900;font-size:15px;letter-spacing:-0.03em;color:var(--white);text-decoration:none;}
+    .nav-logo span{color:var(--brand-lt);}
+    .nav-links{display:flex;align-items:center;gap:2px;}
+    .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:0.04em;color:#d4d4d8;text-decoration:none;padding:6px 14px;border-radius:6px;transition:all 0.15s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--white);background:var(--edge2);}
+    .nav-links a.active{color:var(--brand-lt);}
+    .nav-cta{font-family:var(--sans);font-size:13px;font-weight:600;padding:8px 20px;background:var(--brand);color:#fff;border-radius:6px;text-decoration:none;transition:opacity 0.15s;}
+    .nav-cta:hover{opacity:0.85;}
+
+    .about-wrap{max-width:var(--max);margin:0 auto;padding:72px 32px;display:grid;grid-template-columns:380px 1fr;gap:72px;align-items:start;}
+
+    /* PHOTO COLUMN */
+    .photo-col{}
+    .photo-frame{
+      width:100%;aspect-ratio:1/1;border-radius:16px;overflow:hidden;
+      border:1px solid var(--edge2);
+      background:var(--s2);
+      position:relative;
+    }
+    .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .photo-badge{
+      margin-top:20px;
+      display:flex;align-items:center;gap:8px;
+      font-family:var(--mono);font-size:11px;color:var(--g3);letter-spacing:0.05em;
+    }
+    .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);}
+    .photo-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+    .photo-tag{
+      font-family:var(--mono);font-size:10px;padding:4px 10px;
+      border:1px solid var(--edge2);border-radius:99px;color:var(--g3);letter-spacing:0.04em;
+    }
+
+    /* CONTENT COLUMN */
+    .content-col{}
+    .about-eyebrow{font-family:var(--mono);font-size:11px;color:var(--brand-lt);letter-spacing:0.08em;margin-bottom:12px;}
+    .about-name{font-size:40px;font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:6px;}
+    .about-title{font-size:16px;color:var(--g2);margin-bottom:32px;font-weight:400;}
+    .about-title span{color:var(--brand-lt);}
+
+    .about-paras{display:flex;flex-direction:column;gap:16px;margin-bottom:36px;}
+    .about-para{font-size:15px;line-height:1.8;color:var(--g2);}
+    .about-para strong{color:var(--g1);font-weight:500;}
+
+    .about-links{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn-primary{font-family:var(--sans);font-size:14px;font-weight:600;padding:12px 24px;background:var(--brand);color:#fff;border-radius:8px;text-decoration:none;transition:opacity 0.15s;display:inline-block;}
+    .btn-primary:hover{opacity:0.85;}
+    .btn-linkedin{font-family:var(--sans);font-size:14px;font-weight:600;padding:12px 24px;background:transparent;color:#0a66c2;border-radius:8px;text-decoration:none;border:1.5px solid #0a66c2;transition:all 0.15s;display:inline-block;}
+    .btn-linkedin:hover{background:#0a66c2;color:#fff;}
+
+    /* HIGHLIGHTS */
+    .highlights{margin-top:48px;padding-top:48px;border-top:1px solid var(--edge);max-width:var(--max);margin-left:auto;margin-right:auto;padding-left:32px;padding-right:32px;}
+    .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+    .hl-card{background:var(--s2);border:1px solid var(--edge2);border-radius:12px;padding:24px;}
+    .hl-icon{font-size:24px;margin-bottom:12px;}
+    .hl-title{font-size:15px;font-weight:600;margin-bottom:6px;letter-spacing:-0.01em;}
+    .hl-desc{font-size:13px;color:var(--g2);line-height:1.6;}
+
+    footer{border-top:1px solid var(--edge);margin-top:72px;}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;}
+    .footer-inner p{font-family:var(--mono);font-size:11px;color:var(--g4);}
+
+    @media(max-width:768px){
+      .about-wrap{grid-template-columns:1fr;gap:40px;padding:40px 20px;}
+      .photo-frame{max-width:280px;}
+      .hl-grid{grid-template-columns:1fr;padding:0 20px;}
+      .highlights{padding:40px 20px;}
+      .nav-links{display:none;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">harsh<span>.</span></a>
+    <div class="nav-links">
+      <a href="about.html" class="active">about</a>
+      <a href="index.html#systems">systems</a>
+      <a href="tools.html">tools</a>
+      <a href="index.html#contact">contact</a>
+    </div>
+    <a class="nav-cta" href="index.html#contact">Let's work together →</a>
+  </div>
+</nav>
+
+<div class="about-wrap">
+  <!-- PHOTO -->
+  <div class="photo-col">
+    <div class="photo-frame">
+      <img src="harsh.png" alt="Harsh Nisar"/>
+    </div>
+    <div class="photo-badge"><span class="badge-dot"></span>MUMBAI, INDIA · AVAILABLE</div>
+    <div class="photo-tags">
+      <span class="photo-tag">OPERATIONS</span>
+      <span class="photo-tag">AUTOMATION</span>
+      <span class="photo-tag">NO-CODE</span>
+      <span class="photo-tag">AI TOOLS</span>
+      <span class="photo-tag">WORKFLOW DESIGN</span>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content-col">
+    <div class="about-eyebrow">ABOUT_ME</div>
+    <div class="about-name">Harsh Nisar</div>
+    <div class="about-title">Operations & Automation Professional · <span>Mumbai</span></div>
+    <div class="about-paras">
+      <p class="about-para">I'm an <strong>Operations and Automation professional</strong> focused on building practical systems that make businesses more efficient. I design and optimize workflows using no-code automation, AI, and tools like <strong>Airtable, Zapier, n8n, Excel, and CRM platforms</strong> to reduce manual work and improve day-to-day operations.</p>
+      <p class="about-para">My experience spans <strong>business operations, workflow design, SOPs, reporting, CRM processes, and cross-functional coordination</strong>. I enjoy taking messy or repetitive processes, breaking them down, and turning them into simple, scalable systems that teams can actually use.</p>
+      <p class="about-para">Alongside operations, my background in <strong>derivatives trading</strong> has strengthened my analytical thinking, quantitative approach, and systematic problem-solving skills. I bring that same mindset to building reliable operational systems and solving complex business problems.</p>
+      <p class="about-para">I'm passionate about combining <strong>Operations + Automation + AI</strong> to build smarter systems, eliminate repetitive work, and help businesses scale more efficiently.</p>
+    </div>
+    <div class="about-links">
+      <a class="btn-primary" href="mailto:harshnisar81@gmail.com">Get in touch →</a>
+      <a class="btn-linkedin" href="https://linkedin.com/in/harshnisar45" target="_blank">in LinkedIn ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights">
+  <div class="hl-grid">
+    <div class="hl-card">
+      <div class="hl-icon">⚙️</div>
+      <div class="hl-title">Workflow Design</div>
+      <div class="hl-desc">I map out broken processes, identify the bottlenecks, and design clean systems that replace manual effort with automated flows.</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-icon">🔗</div>
+      <div class="hl-title">No-Code Automation</div>
+      <div class="hl-desc">Using Zapier, Make, n8n, and Airtable to connect tools and build automations that work reliably without writing a single line of code.</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-icon">📊</div>
+      <div class="hl-title">Ops & Reporting</div>
+      <div class="hl-desc">Building dashboards, SOPs, and reporting systems that give teams real-time visibility without manual data entry or spreadsheet chaos.</div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><p>© 2025 HARSH NISAR</p><p>OPERATIONS × AUTOMATION × AI × SYSTEMS</p></div></footer>
+</body>
+</html>
