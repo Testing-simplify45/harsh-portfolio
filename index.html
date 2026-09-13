@@ -183,6 +183,45 @@
       .p3-card{grid-template-columns:1fr}
       .nav-links a{font-size:11px;padding:6px 10px}
     }
+
+    /* PDF MODAL */
+    .pdf-modal-overlay {
+      position:fixed; inset:0; z-index:100;
+      background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);
+      display:none; align-items:center; justify-content:center;
+      padding:20px;
+    }
+    .pdf-modal-overlay.open { display:flex; }
+    .pdf-modal {
+      background:var(--s2); border:1px solid var(--edge2);
+      border-radius:14px; overflow:hidden;
+      width:100%; max-width:860px; max-height:90vh;
+      display:flex; flex-direction:column;
+    }
+    .pdf-modal-header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 20px; border-bottom:1px solid var(--edge);
+      flex-shrink:0;
+    }
+    .pdf-modal-title { font-family:var(--mono); font-size:12px; color:var(--g2); letter-spacing:0.04em; }
+    .pdf-modal-actions { display:flex; align-items:center; gap:10px; }
+    .pdf-dl-btn {
+      font-family:var(--mono); font-size:11px; color:var(--brand-lt);
+      border:1px solid var(--brand-rim); border-radius:6px;
+      padding:5px 12px; text-decoration:none; transition:all 0.15s;
+      background:var(--brand-dim);
+    }
+    .pdf-dl-btn:hover { background:rgba(99,102,241,0.15); }
+    .pdf-close {
+      width:28px; height:28px; border-radius:6px;
+      background:transparent; border:1px solid var(--edge2);
+      color:var(--g2); font-size:16px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:all 0.15s; line-height:1;
+    }
+    .pdf-close:hover { background:var(--edge2); color:var(--white); }
+    .pdf-frame-wrap { flex:1; overflow:hidden; min-height:0; }
+    .pdf-frame-wrap iframe { width:100%; height:100%; border:none; min-height:70vh; }
   </style>
 </head>
 <body>
@@ -283,7 +322,7 @@
         <div class="outcomes-bar">
           <div class="outcome-item"><div class="outcome-n">6-8 <span style="color:var(--brand-lt)">hrs</span></div><div class="outcome-l">WAIT TIME BEFORE</div></div>
           <div class="outcome-item"><div class="outcome-n" style="color:var(--white)">1 <span style="color:var(--brand-lt)">hr</span></div><div class="outcome-l">DELIVERY TIME AFTER</div></div>
-          <div class="outcome-item"><div class="outcome-n">12<span>+</span></div><div class="outcome-l">MANUAL STEPS ELIMINATED</div></div>
+          <div class="outcome-item"><div class="outcome-n">5</div><div class="outcome-l">MANUAL STEPS ELIMINATED</div></div>
           <div class="outcome-item"><div class="outcome-n">5</div><div class="outcome-l">TOOLS CONNECTED</div></div>
         </div>
         <div class="project-body">
@@ -310,7 +349,7 @@
               <div class="case-item"><div class="case-num">04</div><div><div class="case-label">The Impact</div><div class="case-sub">Delivery time reduced from 6-7 hrs to ~1 hr after session</div></div></div>
 
             </div>
-            <a href="case-study-01.pdf" target="_blank" class="pdf-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View case study PDF →</a>
+            <button onclick="openPDF('case-study-01.pdf','Case Study 01 — Live Session Recording Automation')" class="pdf-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View case study PDF →</button>
           </div>
         </div>
       </div>
@@ -319,39 +358,38 @@
       <div class="project-card">
         <div class="project-header">
           <div class="project-num">PROJECT 02</div>
-          <div class="project-title">Creator Operations System</div>
-          <div class="project-chain">CRM <span>→</span> TASK MANAGEMENT <span>→</span> REPORTING</div>
-          <div class="project-problem">Managing 50+ creators generating ₹10M+ MRR with no centralised system. Onboarding was ad-hoc, reporting was manual, and performance tracking lived in scattered spreadsheets.</div>
+          <div class="project-title">Social Media to Discord Community Automation</div>
+          <div class="project-chain">FACEBOOK / LINKEDIN <span>→</span> ZAPIER <span>→</span> DISCORD</div>
+          <div class="project-problem">Every new social media post required manually copying the link, preparing a message from a template, and posting it across 25+ Discord learner channels — the same process repeated every single time a post went live.</div>
         </div>
         <div class="outcomes-bar">
-          <div class="outcome-item"><div class="outcome-n">50<span>+</span></div><div class="outcome-l">CREATORS MANAGED</div></div>
-          <div class="outcome-item"><div class="outcome-n">₹10<span>M+</span></div><div class="outcome-l">MRR SUPPORTED</div></div>
-          <div class="outcome-item"><div class="outcome-n">0</div><div class="outcome-l">MANUAL REPORTS</div></div>
-          <div class="outcome-item"><div class="outcome-n">⭐</div><div class="outcome-l">STAR PERFORMER</div></div>
+          <div class="outcome-item"><div class="outcome-n">4</div><div class="outcome-l">MANUAL STEPS REMOVED</div></div>
+          <div class="outcome-item"><div class="outcome-n">1 <span style="color:var(--brand-lt)">hr</span></div><div class="outcome-l">MANUAL WORK AUTOMATED</div></div>
+          <div class="outcome-item"><div class="outcome-n">20<span style="color:var(--brand-lt)">%</span></div><div class="outcome-l">ENGAGEMENT INCREASED</div></div>
+          <div class="outcome-item"><div class="outcome-n">25<span>+</span></div><div class="outcome-l">CHANNELS COMMUNICATED</div></div>
         </div>
         <div class="project-body">
           <div class="live-panel">
             <div class="panel-label"><span class="panel-label-dot"></span>LIVE WORKFLOW</div>
             <div class="flow-viz">
-              <div class="fv-step"><div class="fv-icon">📝</div><div><div class="fv-tool">INTAKE FORM</div><div class="fv-desc">Creator submits onboarding form</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/zapier.svg" alt="Facebook/LinkedIn" onerror="this.parentNode.innerHTML='📘'"></div><div><div class="fv-tool">FACEBOOK / LINKEDIN</div><div class="fv-desc">New post published</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
-              <div class="fv-step"><div class="fv-icon">📋</div><div><div class="fv-tool">AIRTABLE CRM</div><div class="fv-desc">Profile created, tasks assigned</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/zapier.svg" alt="Zapier"></div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">Detects new post, fetches link</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
-              <div class="fv-step"><div class="fv-icon">⚡</div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">Welcome email + Slack alert fired</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/zapier.svg" alt="Zapier"></div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">Creates announcement message</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
-              <div class="fv-step"><div class="fv-icon">📊</div><div><div class="fv-tool">DASHBOARD</div><div class="fv-desc">Creator KPIs tracked automatically</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/discord.svg" alt="Discord"></div><div><div class="fv-tool">DISCORD</div><div class="fv-desc">Sent to all learner channels</div></div></div>
             </div>
           </div>
           <div class="case-panel">
             <div class="panel-label">CASE STUDY</div>
             <div class="case-toc">
-              <div class="case-item"><div class="case-num">01</div><div><div class="case-label">The Problem</div><div class="case-sub">50+ creators, zero centralised ops system</div></div></div>
-              <div class="case-item"><div class="case-num">02</div><div><div class="case-label">The Bottleneck</div><div class="case-sub">Scattered spreadsheets, manual onboarding, no visibility</div></div></div>
-              <div class="case-item"><div class="case-num">03</div><div><div class="case-label">The Solution</div><div class="case-sub">Airtable CRM + automated onboarding + live KPI dashboard</div></div></div>
-              <div class="case-item"><div class="case-num">04</div><div><div class="case-label">The Impact</div><div class="case-sub">Supported ₹10M+ MRR, awarded Star Performer</div></div></div>
-
+              <div class="case-item"><div class="case-num">01</div><div><div class="case-label">The Problem</div><div class="case-sub">Every post required manual copy-paste across multiple Discord channels</div></div></div>
+              <div class="case-item"><div class="case-num">02</div><div><div class="case-label">The Bottleneck</div><div class="case-sub">Repetitive work, delay in updates, risk of missing a channel</div></div></div>
+              <div class="case-item"><div class="case-num">03</div><div><div class="case-label">The Solution</div><div class="case-sub">Zapier detects post → builds message → distributes to all channels</div></div></div>
+              <div class="case-item"><div class="case-num">04</div><div><div class="case-label">The Impact</div><div class="case-sub">Instant distribution, zero missed channels, consistent messaging</div></div></div>
             </div>
-            <a href="#" class="pdf-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View case study PDF →</a>
+            <button onclick="openPDF('case-study-02.pdf','Case Study 02 — Social Media to Discord Automation')" class="pdf-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View case study PDF →</button>
           </div>
         </div>
       </div>
@@ -425,8 +463,8 @@
         <h2 class="contact-h">Let's build<br><span>something.</span></h2>
         <p class="contact-p">Open to ops, automation, and systems roles. Based in Mumbai — remote-friendly. Always up for a conversation about operational systems.</p>
         <div class="contact-links">
-          <a class="btn-primary" href="#contact">Let's work together →</a>
-          <a class="btn-linkedin" href="https://linkedin.com/in/harshnisar45" target="_blank">in LinkedIn ↗</a>
+          <a class="btn-primary" href="mailto:harshnisar81@gmail.com">Let's get your system automated →</a>
+          <a class="btn-ghost" href="mailto:harshnisar81@gmail.com">Let's work together</a>
         </div>
       </div>
       <div class="contact-card">
@@ -441,5 +479,42 @@
 <footer><div class="footer-inner"><p>© 2025 HARSH NISAR · MUMBAI, INDIA</p><p>OPERATIONS × AUTOMATION × AI × SYSTEMS</p></div></footer>
 
 
+
+<!-- PDF MODAL -->
+<div class="pdf-modal-overlay" id="pdfOverlay" onclick="closePDFOutside(event)">
+  <div class="pdf-modal">
+    <div class="pdf-modal-header">
+      <span class="pdf-modal-title" id="pdfTitle"></span>
+      <div class="pdf-modal-actions">
+        <a class="pdf-dl-btn" id="pdfDlBtn" href="#" download>Download PDF ↓</a>
+        <button class="pdf-close" onclick="closePDF()">✕</button>
+      </div>
+    </div>
+    <div class="pdf-frame-wrap">
+      <iframe id="pdfFrame" src="" title="Case Study PDF"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+function openPDF(src, title) {
+  document.getElementById('pdfFrame').src = src;
+  document.getElementById('pdfTitle').textContent = title;
+  document.getElementById('pdfDlBtn').href = src;
+  document.getElementById('pdfOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePDF() {
+  document.getElementById('pdfOverlay').classList.remove('open');
+  document.getElementById('pdfFrame').src = '';
+  document.body.style.overflow = '';
+}
+function closePDFOutside(e) {
+  if (e.target === document.getElementById('pdfOverlay')) closePDF();
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePDF();
+});
+</script>
 </body>
 </html>
