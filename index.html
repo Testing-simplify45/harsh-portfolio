@@ -184,44 +184,50 @@
       .nav-links a{font-size:11px;padding:6px 10px}
     }
 
-    /* PDF MODAL */
+    /* PDF MODAL - fullscreen Behance style */
     .pdf-modal-overlay {
-      position:fixed; inset:0; z-index:100;
-      background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);
-      display:none; align-items:center; justify-content:center;
-      padding:20px;
+      position:fixed; inset:0; z-index:200;
+      background:#000;
+      display:none; flex-direction:column;
     }
     .pdf-modal-overlay.open { display:flex; }
-    .pdf-modal {
-      background:var(--s2); border:1px solid var(--edge2);
-      border-radius:14px; overflow:hidden;
-      width:100%; max-width:860px; max-height:90vh;
-      display:flex; flex-direction:column;
-    }
-    .pdf-modal-header {
+    .pdf-modal-bar {
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 20px; border-bottom:1px solid var(--edge);
-      flex-shrink:0;
+      padding:12px 24px; background:#111; border-bottom:1px solid #222;
+      flex-shrink:0; height:52px;
     }
-    .pdf-modal-title { font-family:var(--mono); font-size:12px; color:var(--g2); letter-spacing:0.04em; }
+    .pdf-modal-title {
+      font-family:var(--mono); font-size:12px; color:var(--g2); letter-spacing:0.04em;
+    }
     .pdf-modal-actions { display:flex; align-items:center; gap:10px; }
     .pdf-dl-btn {
       font-family:var(--mono); font-size:11px; color:var(--brand-lt);
       border:1px solid var(--brand-rim); border-radius:6px;
-      padding:5px 12px; text-decoration:none; transition:all 0.15s;
+      padding:6px 14px; text-decoration:none; transition:all 0.15s;
       background:var(--brand-dim);
     }
-    .pdf-dl-btn:hover { background:rgba(99,102,241,0.15); }
-    .pdf-close {
-      width:28px; height:28px; border-radius:6px;
-      background:transparent; border:1px solid var(--edge2);
-      color:var(--g2); font-size:16px; cursor:pointer;
-      display:flex; align-items:center; justify-content:center;
-      transition:all 0.15s; line-height:1;
+    .pdf-dl-btn:hover { background:rgba(99,102,241,0.2); }
+    .pdf-close-btn {
+      font-family:var(--mono); font-size:12px; font-weight:700;
+      padding:6px 14px; background:transparent; border:1px solid var(--edge2);
+      color:var(--g2); border-radius:6px; cursor:pointer; transition:all 0.15s;
     }
-    .pdf-close:hover { background:var(--edge2); color:var(--white); }
-    .pdf-frame-wrap { flex:1; overflow:hidden; min-height:0; }
-    .pdf-frame-wrap iframe { width:100%; height:100%; border:none; min-height:70vh; }
+    .pdf-close-btn:hover { background:var(--edge2); color:var(--white); }
+    .pdf-body {
+      flex:1; overflow-y:auto; display:flex;
+      justify-content:center; padding:32px 24px;
+      background:#0a0a0a;
+    }
+    .pdf-pages { display:flex; flex-direction:column; gap:16px; width:100%; max-width:900px; }
+    .pdf-page-img {
+      width:100%; border-radius:4px;
+      box-shadow:0 4px 32px rgba(0,0,0,0.6);
+      display:block;
+    }
+    .pdf-loading {
+      color:var(--g3); font-family:var(--mono); font-size:13px;
+      text-align:center; padding:60px;
+    }
   </style>
 </head>
 <body>
@@ -460,7 +466,7 @@
   <div class="section-inner">
     <div class="contact-grid">
       <div>
-        <h2 class="contact-h">Let's build<br><span>something.</span></h2>
+        <h2 class="contact-h">Ready to<br><span>automate?</span></h2>
         <p class="contact-p">Open to ops, automation, and systems roles. Based in Mumbai — remote-friendly. Always up for a conversation about operational systems.</p>
         <div class="contact-links">
           <a class="btn-primary" href="mailto:harshnisar81@gmail.com">Let's get your system automated →</a>
@@ -481,37 +487,66 @@
 
 
 <!-- PDF MODAL -->
-<div class="pdf-modal-overlay" id="pdfOverlay" onclick="closePDFOutside(event)">
-  <div class="pdf-modal">
-    <div class="pdf-modal-header">
-      <span class="pdf-modal-title" id="pdfTitle"></span>
-      <div class="pdf-modal-actions">
-        <a class="pdf-dl-btn" id="pdfDlBtn" href="#" download>Download PDF ↓</a>
-        <button class="pdf-close" onclick="closePDF()">✕</button>
-      </div>
+<div class="pdf-modal-overlay" id="pdfOverlay">
+  <div class="pdf-modal-bar">
+    <span class="pdf-modal-title" id="pdfTitle"></span>
+    <div class="pdf-modal-actions">
+      <a class="pdf-dl-btn" id="pdfDlBtn" href="#" download>Download PDF ↓</a>
+      <button class="pdf-close-btn" onclick="closePDF()">✕ Close</button>
     </div>
-    <div class="pdf-frame-wrap">
-      <iframe id="pdfFrame" src="" title="Case Study PDF"></iframe>
-    </div>
+  </div>
+  <div class="pdf-body" id="pdfBody">
+    <div class="pdf-loading" id="pdfLoading">Loading case study...</div>
+    <div class="pdf-pages" id="pdfPages"></div>
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
 function openPDF(src, title) {
-  document.getElementById('pdfFrame').src = src;
   document.getElementById('pdfTitle').textContent = title;
   document.getElementById('pdfDlBtn').href = src;
   document.getElementById('pdfOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  document.getElementById('pdfLoading').style.display = 'block';
+  document.getElementById('pdfPages').innerHTML = '';
+
+  pdfjsLib.getDocument(src).promise.then(function(pdf) {
+    document.getElementById('pdfLoading').style.display = 'none';
+    var pages = document.getElementById('pdfPages');
+    var renders = [];
+    for (var i = 1; i <= pdf.numPages; i++) {
+      renders.push(renderPage(pdf, i, pages));
+    }
+  }).catch(function(err) {
+    document.getElementById('pdfLoading').textContent = 'Could not load PDF.';
+  });
 }
+
+function renderPage(pdf, num, container) {
+  return pdf.getPage(num).then(function(page) {
+    var scale = 2;
+    var vp = page.getViewport({scale: scale});
+    var canvas = document.createElement('canvas');
+    canvas.className = 'pdf-page-img';
+    canvas.width = vp.width;
+    canvas.height = vp.height;
+    canvas.style.maxWidth = '100%';
+    canvas.style.height = 'auto';
+    container.appendChild(canvas);
+    return page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
+  });
+}
+
 function closePDF() {
   document.getElementById('pdfOverlay').classList.remove('open');
-  document.getElementById('pdfFrame').src = '';
+  document.getElementById('pdfPages').innerHTML = '';
   document.body.style.overflow = '';
 }
-function closePDFOutside(e) {
-  if (e.target === document.getElementById('pdfOverlay')) closePDF();
-}
+
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closePDF();
 });
