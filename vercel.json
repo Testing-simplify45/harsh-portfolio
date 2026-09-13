@@ -2,14 +2,42 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.html",
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "logos/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.svg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.png",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/about",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/tools",
+      "dest": "/tools.html"
+    },
+    {
+      "src": "/about.html",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/tools.html",
+      "dest": "/tools.html"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/$1"
     }
   ]
 }
