@@ -228,6 +228,23 @@
       color:var(--g3); font-family:var(--mono); font-size:13px;
       text-align:center; padding:60px;
     }
+    .pdf-cta-bar {
+      flex-shrink:0; background:#111; border-top:1px solid #222;
+      padding:16px 24px; display:flex; align-items:center; justify-content:center; gap:12px;
+    }
+    .pdf-cta-text {
+      font-size:13px; font-weight:600; color:#fff;
+      margin-right:8px; white-space:nowrap;
+    }
+    .pdf-cta-btn {
+      font-family:var(--sans); font-size:13px; font-weight:600;
+      padding:10px 22px; border-radius:7px; text-decoration:none;
+      transition:opacity 0.15s; white-space:nowrap;
+    }
+    .pdf-cta-btn.indigo { background:var(--brand); color:#fff; border:none; }
+    .pdf-cta-btn.indigo:hover { opacity:0.85; }
+    .pdf-cta-btn.li { background:#0a66c2; color:#fff; border:none; }
+    .pdf-cta-btn.li:hover { opacity:0.85; }
   </style>
 </head>
 <body>
@@ -499,6 +516,11 @@
   <div class="pdf-body" id="pdfBody">
     <div class="pdf-loading" id="pdfLoading">Loading case study...</div>
     <div class="pdf-pages" id="pdfPages"></div>
+  </div>
+  <div class="pdf-cta-bar">
+    <span class="pdf-cta-text">Let's get your systems Automated</span>
+    <a class="pdf-cta-btn indigo" href="mailto:harshnisar81@gmail.com">Let's work Together →</a>
+    <a class="pdf-cta-btn li" href="https://linkedin.com/in/harshnisar45" target="_blank">LinkedIn ↗</a>
   </div>
 </div>
 
