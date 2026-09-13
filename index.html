@@ -518,8 +518,11 @@
     <div class="pdf-pages" id="pdfPages"></div>
   </div>
   <div class="pdf-cta-bar">
-    <a class="pdf-cta-btn indigo" href="mailto:harshnisar81@gmail.com">Let's work Together →</a>
-    <a class="pdf-cta-btn li" href="https://linkedin.com/in/harshnisar45" target="_blank">LinkedIn ↗</a>
+    <span class="pdf-cta-text">Let's get your systems Automated</span>
+    <div style="display:flex;gap:10px;">
+      <a class="pdf-cta-btn indigo" href="mailto:harshnisar81@gmail.com">Let's work Together →</a>
+      <a class="pdf-cta-btn li" href="https://linkedin.com/in/harshnisar45" target="_blank">LinkedIn ↗</a>
+    </div>
   </div>
 </div>
 
@@ -550,14 +553,17 @@ function openPDF(src, title) {
 
 function renderPage(pdf, num, container) {
   return pdf.getPage(num).then(function(page) {
-    var scale = 3;
+    var devicePixelRatio = window.devicePixelRatio || 1;
+    var baseScale = (document.getElementById('pdfBody').clientWidth * 0.92) / page.getViewport({scale:1}).width;
+    var scale = baseScale * devicePixelRatio;
     var vp = page.getViewport({scale: scale});
     var canvas = document.createElement('canvas');
     canvas.className = 'pdf-page-img';
     canvas.width = vp.width;
     canvas.height = vp.height;
+    canvas.style.width = (vp.width / devicePixelRatio) + 'px';
+    canvas.style.height = (vp.height / devicePixelRatio) + 'px';
     canvas.style.maxWidth = '100%';
-    canvas.style.height = 'auto';
     container.appendChild(canvas);
     return page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
   });
