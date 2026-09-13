@@ -300,8 +300,6 @@
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
               <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/discord.svg" alt="Discord"></div><div><div class="fv-tool">DISCORD</div><div class="fv-desc">Recording shared with learners</div></div></div>
             </div>
-            <button class="run-btn" id="runBtn1" onclick="runWorkflow(1)">[ Run Workflow ]</button>
-            <div class="terminal" id="term1"></div>
           </div>
           <div class="case-panel">
             <div class="panel-label">CASE STUDY</div>
@@ -343,8 +341,6 @@
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
               <div class="fv-step"><div class="fv-icon">📊</div><div><div class="fv-tool">DASHBOARD</div><div class="fv-desc">Creator KPIs tracked automatically</div></div></div>
             </div>
-            <button class="run-btn" id="runBtn2" onclick="runWorkflow(2)">[ Run Workflow ]</button>
-            <div class="terminal" id="term2"></div>
           </div>
           <div class="case-panel">
             <div class="panel-label">CASE STUDY</div>
@@ -444,37 +440,6 @@
 
 <footer><div class="footer-inner"><p>© 2025 HARSH NISAR · MUMBAI, INDIA</p><p>OPERATIONS × AUTOMATION × AI × SYSTEMS</p></div></footer>
 
-<script>
-var workflows = {
-  1:[
-    {delay:0,text:'Initiating workflow...',cls:'active'},
-    {delay:700,text:'✓ Attendance verified in Airtable',cls:'ok'},
-    {delay:1400,text:'✓ Certificate generated',cls:'ok'},
-    {delay:2100,text:'✓ Email prepared via Zapier',cls:'ok'},
-    {delay:2800,text:'✓ Dispatch completed',cls:'ok'},
-    {delay:3200,text:null,time:'Time saved: ~72 sec per attendee · 0 manual steps'}
-  ],
-  2:[
-    {delay:0,text:'Initiating workflow...',cls:'active'},
-    {delay:700,text:'✓ Intake form received',cls:'ok'},
-    {delay:1400,text:'✓ Creator profile created in Airtable',cls:'ok'},
-    {delay:2100,text:'✓ Welcome email + Slack alert triggered',cls:'ok'},
-    {delay:2800,text:'✓ KPI tracking activated',cls:'ok'},
-    {delay:3200,text:null,time:'Time saved: ~25 min per creator onboarding'}
-  ]
-};
-function runWorkflow(id){
-  var btn=document.getElementById('runBtn'+id);
-  var term=document.getElementById('term'+id);
-  btn.disabled=true; btn.textContent='[ Running... ]';
-  term.innerHTML=''; term.classList.add('show');
-  workflows[id].forEach(function(s){
-    setTimeout(function(){
-      if(s.text){var l=document.createElement('div');l.className='t-line '+(s.cls||'');l.textContent=s.text;term.appendChild(l);}
-      if(s.time){var t=document.createElement('div');t.className='t-time';t.textContent=s.time;term.appendChild(t);btn.disabled=false;btn.textContent='[ Run Again ]';}
-    },s.delay);
-  });
-}
-</script>
+
 </body>
 </html>
