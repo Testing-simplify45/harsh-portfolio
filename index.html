@@ -518,7 +518,6 @@
     <div class="pdf-pages" id="pdfPages"></div>
   </div>
   <div class="pdf-cta-bar">
-    <span class="pdf-cta-text">Let's get your systems Automated</span>
     <a class="pdf-cta-btn indigo" href="mailto:harshnisar81@gmail.com">Let's work Together →</a>
     <a class="pdf-cta-btn li" href="https://linkedin.com/in/harshnisar45" target="_blank">LinkedIn ↗</a>
   </div>
@@ -551,7 +550,7 @@ function openPDF(src, title) {
 
 function renderPage(pdf, num, container) {
   return pdf.getPage(num).then(function(page) {
-    var scale = 2;
+    var scale = 3;
     var vp = page.getViewport({scale: scale});
     var canvas = document.createElement('canvas');
     canvas.className = 'pdf-page-img';
