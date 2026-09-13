@@ -103,6 +103,8 @@
     .flow-viz { display:flex; flex-direction:column; gap:0; margin-bottom:16px; }
     .fv-step { display:flex; align-items:center; gap:12px; padding:6px 0; }
     .fv-icon { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; border:1px solid var(--edge2); background:var(--bg); }
+    .fv-logo { padding:4px; border:1px solid var(--edge2); background:var(--bg); }
+    .fv-logo img { width:22px; height:22px; object-fit:contain; display:block; }
     .fv-tool { font-family:var(--mono); font-size:9px; color:var(--brand-lt); letter-spacing:0.06em; }
     .fv-desc { font-size:12px; color:var(--g1); }
     .fv-connector { width:32px; display:flex; justify-content:center; flex-shrink:0; }
@@ -274,27 +276,29 @@
       <div class="project-card">
         <div class="project-header">
           <div class="project-num">PROJECT 01</div>
-          <div class="project-title">Certificate Dispatch Automation</div>
-          <div class="project-chain">AIRTABLE <span>→</span> ZAPIER <span>→</span> EMAIL</div>
-          <div class="project-problem">Manual certificate processing for 200-person workshop cohorts. Each certificate required copy-pasting names, generating PDFs, and sending individual emails — taking 4+ hours per cohort.</div>
+          <div class="project-title">Live Session Recording Automation</div>
+          <div class="project-chain">GOOGLE DRIVE <span>→</span> ZAPIER <span>→</span> YOUTUBE <span>→</span> SLACK <span>→</span> DISCORD</div>
+          <div class="project-problem">During COVID, 15-20 live programs ran simultaneously. Recordings were manually downloaded, uploaded to YouTube, formatted, and shared — learners waited 6-8 hours or until the next morning for access.</div>
         </div>
         <div class="outcomes-bar">
-          <div class="outcome-item"><div class="outcome-n">4<span>hrs</span></div><div class="outcome-l">SAVED PER COHORT</div></div>
-          <div class="outcome-item"><div class="outcome-n">200<span>+</span></div><div class="outcome-l">ATTENDEES PROCESSED</div></div>
-          <div class="outcome-item"><div class="outcome-n">0</div><div class="outcome-l">MANUAL ERRORS</div></div>
-          <div class="outcome-item"><div class="outcome-n">100<span>%</span></div><div class="outcome-l">AUTOMATED</div></div>
+          <div class="outcome-item"><div class="outcome-n">6-8 <span style="color:var(--brand-lt)">hrs</span></div><div class="outcome-l">WAIT TIME BEFORE</div></div>
+          <div class="outcome-item"><div class="outcome-n" style="color:var(--white)">1 <span style="color:var(--brand-lt)">hr</span></div><div class="outcome-l">DELIVERY TIME AFTER</div></div>
+          <div class="outcome-item"><div class="outcome-n">12<span>+</span></div><div class="outcome-l">MANUAL STEPS ELIMINATED</div></div>
+          <div class="outcome-item"><div class="outcome-n">5</div><div class="outcome-l">TOOLS CONNECTED</div></div>
         </div>
         <div class="project-body">
           <div class="live-panel">
             <div class="panel-label"><span class="panel-label-dot"></span>LIVE WORKFLOW</div>
             <div class="flow-viz">
-              <div class="fv-step"><div class="fv-icon">📋</div><div><div class="fv-tool">AIRTABLE</div><div class="fv-desc">Attendee checks in, row updated</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/googledrive.svg" alt="Google Drive"></div><div><div class="fv-tool">GOOGLE DRIVE</div><div class="fv-desc">Recording auto-saved to folder</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
-              <div class="fv-step"><div class="fv-icon">☑️</div><div><div class="fv-tool">TRIGGER</div><div class="fv-desc">Checkbox marked → automation fires</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/zapier.svg" alt="Zapier"></div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">New file detected → trigger fires</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
-              <div class="fv-step"><div class="fv-icon">⚡</div><div><div class="fv-tool">ZAPIER</div><div class="fv-desc">Certificate generated and dispatched</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/youtube.svg" alt="YouTube"></div><div><div class="fv-tool">YOUTUBE</div><div class="fv-desc">Uploaded, titled, set to Unlisted</div></div></div>
               <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
-              <div class="fv-step"><div class="fv-icon">📧</div><div><div class="fv-tool">EMAIL</div><div class="fv-desc">Personalised certificate delivered</div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/slack.svg" alt="Slack"></div><div><div class="fv-tool">SLACK</div><div class="fv-desc">Recording link posted internally</div></div></div>
+              <div class="fv-step"><div class="fv-connector"><div class="fv-line"></div></div></div>
+              <div class="fv-step"><div class="fv-icon fv-logo"><img src="logos/discord.svg" alt="Discord"></div><div><div class="fv-tool">DISCORD</div><div class="fv-desc">Recording shared with learners</div></div></div>
             </div>
             <button class="run-btn" id="runBtn1" onclick="runWorkflow(1)">[ Run Workflow ]</button>
             <div class="terminal" id="term1"></div>
@@ -302,13 +306,13 @@
           <div class="case-panel">
             <div class="panel-label">CASE STUDY</div>
             <div class="case-toc">
-              <div class="case-item"><div class="case-num">01</div><div><div class="case-label">The Problem</div><div class="case-sub">4+ hrs manual work per 200-person cohort</div></div></div>
-              <div class="case-item"><div class="case-num">02</div><div><div class="case-label">The Bottleneck</div><div class="case-sub">Copy-paste names, manual PDF gen, individual sends</div></div></div>
-              <div class="case-item"><div class="case-num">03</div><div><div class="case-label">The Solution</div><div class="case-sub">Checkbox trigger → Zapier → bulk certificate dispatch</div></div></div>
-              <div class="case-item"><div class="case-num">04</div><div><div class="case-label">The Impact</div><div class="case-sub">4 hrs → 0 min manual effort, zero errors, infinite scale</div></div></div>
-              <div class="case-item"><div class="case-num">05</div><div><div class="case-label">What I'd improve</div><div class="case-sub">Conditional logic for partial attendance + feedback trigger</div></div></div>
+              <div class="case-item"><div class="case-num">01</div><div><div class="case-label">The Problem</div><div class="case-sub">Learners waited 6-8 hrs for program recordings during COVID</div></div></div>
+              <div class="case-item"><div class="case-num">02</div><div><div class="case-label">The Bottleneck</div><div class="case-sub">2 ops members manually handling 15-20 programs daily</div></div></div>
+              <div class="case-item"><div class="case-num">03</div><div><div class="case-label">The Solution</div><div class="case-sub">Drive → Zapier → YouTube → Slack → Discord, fully automated</div></div></div>
+              <div class="case-item"><div class="case-num">04</div><div><div class="case-label">The Impact</div><div class="case-sub">Delivery time reduced from 6-7 hrs to ~1 hr after session</div></div></div>
+
             </div>
-            <a href="#" class="pdf-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View case study PDF →</a>
+            <a href="case-study-01.pdf" target="_blank" class="pdf-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View case study PDF →</a>
           </div>
         </div>
       </div>
@@ -349,7 +353,7 @@
               <div class="case-item"><div class="case-num">02</div><div><div class="case-label">The Bottleneck</div><div class="case-sub">Scattered spreadsheets, manual onboarding, no visibility</div></div></div>
               <div class="case-item"><div class="case-num">03</div><div><div class="case-label">The Solution</div><div class="case-sub">Airtable CRM + automated onboarding + live KPI dashboard</div></div></div>
               <div class="case-item"><div class="case-num">04</div><div><div class="case-label">The Impact</div><div class="case-sub">Supported ₹10M+ MRR, awarded Star Performer</div></div></div>
-              <div class="case-item"><div class="case-num">05</div><div><div class="case-label">What I'd improve</div><div class="case-sub">Revenue-based segmentation + automated health score</div></div></div>
+
             </div>
             <a href="#" class="pdf-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View case study PDF →</a>
           </div>
